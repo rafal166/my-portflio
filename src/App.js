@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./components/FontAwesomeIcons";
+import Navbar from "./components/Navbar/Navbar";
+import NavItem from "./components/Navbar/NavItem";
+import DropdownMenu from "./components/Navbar/DropdownMenu";
+// FontAwesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Navbar>
+      <NavItem icon={<FontAwesomeIcon icon="plus" />} />
+      <NavItem icon={<FontAwesomeIcon icon="bell" />} />
+      <NavItem icon={<FontAwesomeIcon icon="chevron-down" />}>
+        <DropdownMenu></DropdownMenu>
+      </NavItem>
+    </Navbar>
   );
 }
 
