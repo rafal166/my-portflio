@@ -7,7 +7,7 @@ import {
     ButtonStyledAnimation,
 } from './CustomButtonAnimation1.styles';
 
-export default function CustomButtonAnimation1() {
+export default function CustomButtonAnimation1({ children, ...props }) {
     const [cords, setCords] = useState({ top: 0, left: 0 });
     const [size, setSize] = useState(300);
 
@@ -37,12 +37,13 @@ export default function CustomButtonAnimation1() {
             }}>
             <GlobalStyles></GlobalStyles>
             <ButtonStyled
+                {...props}
                 type='button'
                 onMouseEnter={onMouseEnter}
                 onMouseOut={onMouseOut}
                 size={size}>
                 <ButtonStyledAnimation style={cords}></ButtonStyledAnimation>
-                Button
+                {children}
             </ButtonStyled>
         </ThemeProvider>
     );

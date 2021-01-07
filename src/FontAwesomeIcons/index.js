@@ -2,6 +2,9 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     faBell,
     faPlus,
+    faBriefcase,
+    faTimes,
+    faComments,
     faChevronRight,
     faChevronDown,
     faChevronLeft,
@@ -19,6 +22,9 @@ library.add(
     faCog,
     faPlus, //
     faUser,
+    faBriefcase,
+    faTimes,
+    faComments,
     faChevronRight,
     faChevronLeft,
     faSquare,

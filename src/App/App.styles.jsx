@@ -1,7 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-
 	:root{
 		font-size: 15px;
 	}
@@ -17,10 +16,6 @@ export const GlobalStyles = createGlobalStyle`
 
 	main{
 		margin-left: 5rem
-	}
-
-	.pad{
-		padding: 15px;
 	}
 
 	@media only screen and (max-width: 600px) {

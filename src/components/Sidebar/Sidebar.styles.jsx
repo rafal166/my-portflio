@@ -1,19 +1,20 @@
 import styled from 'styled-components';
 
-import { SidebarItemTextStyled, SidebarItemStyled } from './SidebarItem.styles';
+import {
+    SidebarItemTextStyled,
+    SidebarItemStyled,
+} from '../SidebarItem/SidebarItem.styles';
+
+import SidebarItem from '../SidebarItem/SidebarItem.component';
 
 const defaultProps = {
-    theme: {
-        primaryBg: '#23232e',
-        secondaryBg: '#141418',
-        primaryColor: '#b6b6b6',
-        secondaryColor: '#ececec',
-        accentColor: 'blue',
+    themeDefault: {
+        collapsedWidth: '5em',
+        expandWidth: '16em',
     },
 };
 
 export const SidebarStyled = styled.nav`
-    width: 5rem;
     height: 100vh;
     position: fixed;
     top: 0;
@@ -22,15 +23,16 @@ export const SidebarStyled = styled.nav`
     transition: width 0.2s ease;
 
     @media only screen and (min-width: 600px) {
-        &:hover ${SidebarItemTextStyled} {
-            display: block;
+        ${SidebarItemTextStyled} {
+            display: ${({ expand }) => (expand ? 'block' : 'none')};
         }
-
-        &:hover {
-            width: 16rem;
-        }
+        width: ${({ expand, themeDefault }) =>
+            expand ? themeDefault.expandWidth : themeDefault.collapsedWidth};
     }
     @media only screen and (max-width: 600px) {
+        & ${SidebarItemStyled}:first-child {
+            display: none;
+        }
         top: initial;
         bottom: 0;
         width: 100vw;
@@ -45,6 +47,7 @@ export const SidebarItemListStyled = styled.ul`
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
 
     @media only screen and (max-width: 600px) {
         flex-direction: row;
@@ -53,6 +56,16 @@ export const SidebarItemListStyled = styled.ul`
         & ${SidebarItemStyled} {
             width: ${({ numChildren }) => 100 / numChildren}%;
         }
+    }
+`;
+
+export const SidebarToggler = styled(SidebarItem)`
+    & svg {
+        transform: rotate(${({ expand }) => (expand ? '180' : '0')}deg);
+        transition: 0.2s;
+    }
+    @media only screen and (max-width: 600px) {
+        display: none;
     }
 `;
 
