@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import {
     SidebarItemTextStyled,
@@ -14,6 +14,30 @@ const defaultProps = {
     },
 };
 
+export const Toggler = styled(SidebarItem)`
+    & svg {
+        transform: rotate(${({ expand }) => (expand ? '180' : '0')}deg);
+        transition: 0.2s;
+    }
+    @media only screen and (max-width: 600px) {
+        display: none;
+    }
+    &:hover {
+        background-color: ${({ theme }) => theme.primaryBg};
+    }
+`;
+
+const expandedStyles = css`
+    ${SidebarItemTextStyled} {
+        display: block;
+    }
+    width: ${({ themeDefault }) => themeDefault.expandWidth};
+
+    ${Toggler} svg {
+        transform: rotate(180deg);
+    }
+`;
+
 export const SidebarStyled = styled.nav`
     height: 100vh;
     position: fixed;
@@ -23,11 +47,18 @@ export const SidebarStyled = styled.nav`
     transition: width 0.2s ease;
 
     @media only screen and (min-width: 600px) {
+        &:hover {
+            ${({ expandOnHover }) => (expandOnHover ? expandedStyles : null)}
+        }
         ${SidebarItemTextStyled} {
             display: ${({ expand }) => (expand ? 'block' : 'none')};
         }
         width: ${({ expand, themeDefault }) =>
             expand ? themeDefault.expandWidth : themeDefault.collapsedWidth};
+
+        & > *::last-child {
+            margin-top: auto;
+        }
     }
     @media only screen and (max-width: 600px) {
         & ${SidebarItemStyled}:first-child {
@@ -40,7 +71,7 @@ export const SidebarStyled = styled.nav`
     }
 `;
 
-export const SidebarItemListStyled = styled.ul`
+export const ListStyled = styled.ul`
     list-style: none;
     padding: 0;
     margin: 0;
@@ -56,16 +87,6 @@ export const SidebarItemListStyled = styled.ul`
         & ${SidebarItemStyled} {
             width: ${({ numChildren }) => 100 / numChildren}%;
         }
-    }
-`;
-
-export const SidebarToggler = styled(SidebarItem)`
-    & svg {
-        transform: rotate(${({ expand }) => (expand ? '180' : '0')}deg);
-        transition: 0.2s;
-    }
-    @media only screen and (max-width: 600px) {
-        display: none;
     }
 `;
 

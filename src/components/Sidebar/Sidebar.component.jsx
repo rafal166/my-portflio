@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
 
-import {
-    SidebarStyled,
-    SidebarItemListStyled,
-    SidebarToggler,
-} from './Sidebar.styles';
+import { SidebarStyled, ListStyled, Toggler } from './Sidebar.styles';
 
 function Sidebar({ children }) {
     const [expanded, setExpanded] = useState(false);
+    // eslint-disable-next-line
+    const [expandOnHover, setExpandOnHover] = useState(true);
 
     return (
-        <SidebarStyled expand={expanded}>
-            <SidebarItemListStyled
+        <SidebarStyled expand={expanded} expandOnHover={expandOnHover}>
+            <ListStyled
                 expand={expanded}
+                expandOnHover={expandOnHover}
                 numChildren={children.length}>
-                <SidebarToggler
+                <Toggler
                     expand={expanded}
                     align='right'
-                    onClick={() => setExpanded(!expanded)}
-                    icon='chevron-right'></SidebarToggler>
+                    onClick={() =>
+                        setExpanded(expandOnHover ? false : !expanded)
+                    }
+                    icon='chevron-right'></Toggler>
                 {children}
-            </SidebarItemListStyled>
+            </ListStyled>
         </SidebarStyled>
     );
 }

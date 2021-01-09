@@ -12,6 +12,7 @@ class GlobalRoute {
         projects: `${this.baseUrl}projects`,
         contact: `${this.baseUrl}contact`,
         settings: `${this.baseUrl}settings`,
+        lab: `${this.baseUrl}my-laboratory`,
     };
 
     /**

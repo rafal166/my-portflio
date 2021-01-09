@@ -10,7 +10,7 @@ export default function Settings({ children }) {
     const openModal = () => setModalOpen(true);
 
     return (
-        <div style={{ marginTop: 'auto' }}>
+        <div>
             {React.Children.map(children, (child) => {
                 if (React.isValidElement(child))
                     return React.cloneElement(child, { onClick: openModal });

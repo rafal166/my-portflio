@@ -5,5 +5,7 @@ const globalTheme = {
     secondaryColor: '#132743',
     accentColor: '#f8b502',
     accentSecondaryColor: '#fbf4e4',
+    //media
+    media_size_s: '600px',
 };
 export default globalTheme;

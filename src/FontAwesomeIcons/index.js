@@ -11,10 +11,16 @@ import {
     faCog,
     faUser,
     faSquare,
+    faFlask,
 } from '@fortawesome/free-solid-svg-icons';
 import {
     faFacebookMessenger,
     faReact,
+    //social
+    faFacebook,
+    faGithub,
+    faLinkedin,
+    faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
@@ -30,5 +36,11 @@ library.add(
     faSquare,
     faChevronDown,
     faFacebookMessenger,
-    faReact
+    faReact,
+    faFlask,
+    // social
+    faFacebook,
+    faGithub,
+    faLinkedin,
+    faInstagram
 );

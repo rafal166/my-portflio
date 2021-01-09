@@ -8,22 +8,11 @@ import {
     SidebarItemTextStyled,
 } from './SidebarItem.styles';
 
-function SidebarItem({
-    children,
-    icon,
-    align,
-    last,
-    location,
-    targetLocation,
-    ...otherProps
-}) {
-    console.log(location);
-    console.log(targetLocation);
+function SidebarItem({ children, icon, align, location, ...otherProps }) {
     return (
         <SidebarItemStyled
-            active={location.pathname === targetLocation}
-            {...otherProps}
-            last={last}>
+            active={location.pathname === otherProps.to}
+            {...otherProps}>
             <SidebarItemLinkStyled align={align}>
                 <SidebarItemIconStyled icon={icon}></SidebarItemIconStyled>
                 <SidebarItemTextStyled>{children}</SidebarItemTextStyled>
